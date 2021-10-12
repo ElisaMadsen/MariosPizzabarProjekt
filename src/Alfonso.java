@@ -1,6 +1,4 @@
-public class Alfonso extends Order {
+public class Alfonso{
 
-    public Alfonso(String customerName, int numberOfPizzas, String pizzaName, double pickUpTime) {
-        super(customerName, numberOfPizzas, pizzaName, pickUpTime);
-    }
+
 }
