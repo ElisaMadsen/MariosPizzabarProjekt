@@ -8,6 +8,7 @@ public class Order {
     private int numberOfPizzas;
     private ArrayList pizzaName;
     private String pickUpTime;
+    private static ArrayList<Order> orderList = new ArrayList<>();
 
     public Order(String customerName, int numberOfPizzas, ArrayList pizzaName, String pickUpTime) {
         this.customerName = customerName;
@@ -49,14 +50,15 @@ public class Order {
         scanner.nextLine();
         System.out.println("Skriv hvornår du kan hente din ordre:");
         String pickUpOrdreTime = scanner.nextLine();
-
         Order newOrder123 = new Order(ordreName, antalPizzaer, valgtePizzaer, pickUpOrdreTime);
-
         System.out.println(newOrder123);
         for (Pizza a : valgtePizzaer) {
             System.out.println(a);
         }
+        orderList.add(newOrder123);
     }
 
-
+    public static ArrayList<Order> getOrderList() {
+        return orderList;
     }
+}

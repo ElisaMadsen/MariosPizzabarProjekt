@@ -15,6 +15,8 @@ public class Pizzabar {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        ArrayList<Order> mariosListe = new ArrayList<Order>();
+
         boolean inputChecker = false;
         while (inputChecker == false) {
             System.out.println("Velkommen til Marios pizzabar!\nEr du Mario eller Alfonzo? 1 for Mario, 2 for Alfonzo, 3 for at lukke.");
@@ -25,9 +27,8 @@ public class Pizzabar {
                 if (mariosValg == 1){
                     menukort();
                 } else if (mariosValg == 2){
-                    inputChecker = true;
+                    Order.getOrderList();
                 }
-                //inputChecker = true;
             } else if (erDuMarioEllerAlfonzo == 2) {
                 System.out.println("Skriv 1 for at lave en ny ordre, 2 for at markere en ordre afhentet.");
                 int alfonzosValg = scanner.nextInt();
