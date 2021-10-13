@@ -19,7 +19,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Ordre: " + " name: " + customerName + " has ordred: "+numberOfPizzas+" pizzas, with pick up at: " + pickUpTime;
+        return "Bestilling til " + "navn: " + customerName + " som har bestilt: "+numberOfPizzas+" pizzaer, med afhentningstidspunkt: " + pickUpTime;
     }
 
     public static void createNewOrdre() {

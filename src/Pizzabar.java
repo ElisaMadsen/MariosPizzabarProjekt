@@ -1,21 +1,59 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class Pizzabar {
 
+    static ArrayList<Order> bestillingsListe = new ArrayList<>();
+
     public static void menukort(){
         Pizza.menukort();
     }
 
+    public static void mariosListe(Order hej){
+        bestillingsListe.add(hej);
+    }
+
+
     public static void createNewOrdre(){
-        Order.createNewOrdre();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Skriv dit navn:");
+        String ordreName = scanner.nextLine();
+        System.out.println("Antal pizzaer:");
+        int antalPizzaer = scanner.nextInt();
+        System.out.println("Nummer på kundens ønskede pizza:");
+
+        Pizza margherita = new Pizza(1, "Margherita", 50);
+        Pizza pepperoni = new Pizza(2, "Pepperoni", 60);
+        Pizza capricciossa = new Pizza(3, "Capricciossa", 72);
+        Pizza soloMio = new Pizza(4, "Solo mio", 75);
+        Pizza italiana = new Pizza(5, "Italiana", 80);
+
+        Pizza[] menukort = {margherita, pepperoni, capricciossa, soloMio, italiana};
+        ArrayList<Pizza> valgtePizzaer = new ArrayList();
+
+        for (int i = 0; i < menukort.length; i++) {
+            System.out.println(menukort[i]);
+        }
+        for (int i = 0; i < antalPizzaer; i++) {
+            Pizza pizzaChoice = menukort[scanner.nextInt() - 1];
+            valgtePizzaer.add(pizzaChoice);
+            System.out.println(pizzaChoice);
+        }
+        scanner.nextLine();
+        System.out.println("Skriv hvornår du kan hente din ordre:");
+        String pickUpOrdreTime = scanner.nextLine();
+        Order newOrder123 = new Order(ordreName, antalPizzaer, valgtePizzaer, pickUpOrdreTime);
+        System.out.println(newOrder123);
+        for (Pizza a : valgtePizzaer) {
+            System.out.println(a);
+        }
+        mariosListe(newOrder123);
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        ArrayList<Order> mariosListe = new ArrayList<Order>();
 
         boolean inputChecker = false;
         while (inputChecker == false) {
@@ -27,7 +65,9 @@ public class Pizzabar {
                 if (mariosValg == 1){
                     menukort();
                 } else if (mariosValg == 2){
-                    Order.getOrderList();
+                    for (Order o: bestillingsListe) {
+                        System.out.println(o);
+                    }
                 }
             } else if (erDuMarioEllerAlfonzo == 2) {
                 System.out.println("Skriv 1 for at lave en ny ordre, 2 for at markere en ordre afhentet.");
@@ -35,9 +75,11 @@ public class Pizzabar {
                 if (alfonzosValg == 1){
                     createNewOrdre();
                 } else if (alfonzosValg == 2){
-                    inputChecker = true;
+                    System.out.println("Hvilken ordre vil du afhente?");
+                    int afhentOrdre = scanner.nextInt()-1;
+                    System.out.println(bestillingsListe.get(afhentOrdre)+" er blevet afhentet nu.");
+                    bestillingsListe.remove(afhentOrdre);
                 }
-                //inputChecker = true;
             } else if (erDuMarioEllerAlfonzo == 3){
                 inputChecker = true;
             }
@@ -45,12 +87,6 @@ public class Pizzabar {
                 System.out.println("Skriv nu 1 eller 2 din idiot <3");
             }
         }
-        //menukort();
-        //createNewOrdre();
-
-        ArrayList<Integer> orderID = new ArrayList<Integer>();
-        orderID.add(1);
-
 
 
     }
