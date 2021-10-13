@@ -1,16 +1,17 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
+// Pizza klassen er blevet kodet af Elisa
 public class Pizza {
     static Scanner sc = new Scanner(System.in);
-    private int number;
-    private String name;
-    private int price;
+    private int nummer;
+    private String navn;
+    private int pris;
 
-    public Pizza(int number, String name, int price) {
-        this.number = number;
-        this.name = name;
-        this.price = price;
+    public Pizza(int nummer, String navn, int pris) {
+        this.nummer = nummer;
+        this.navn = navn;
+        this.pris = pris;
     }
     public static void menukort(){
         System.out.println("1. Margherita..............50 kr.");
@@ -44,36 +45,36 @@ public class Pizza {
         }
     }
 
-    public int getNumber() {
-        return number;
+    public int getNummer() {
+        return nummer;
     }
 
-    public String getName() {
-        return name;
+    public String getNavn() {
+        return navn;
     }
 
-    public int getPrice() {
-        return price;
+    public int getPris() {
+        return pris;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setNummer(int nummer) {
+        this.nummer = nummer;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String navn) {
+        this.navn = navn;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setPris(int pris) {
+        this.pris = pris;
     }
 
     @Override
     public String toString() {
         return "Pizza{" +
-                "number=" + number +
-                ", name='" + name + '\'' +
-                ", price=" + price +
+                "number=" + nummer +
+                ", name='" + navn + '\'' +
+                ", price=" + pris +
                 '}';
     }
 }

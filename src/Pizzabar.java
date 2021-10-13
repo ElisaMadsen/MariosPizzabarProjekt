@@ -7,19 +7,20 @@ public class Pizzabar {
 
     static ArrayList<Order> bestillingsListe = new ArrayList<>();
 
+    static int[] ordreStatistik = new int[5];
+
     public static void menukort(){
         Pizza.menukort();
     }
 
-    public static void mariosListe(Order hej){
-        bestillingsListe.add(hej);
+    public static void mariosListe(Order addOrder){
+        bestillingsListe.add(addOrder);
     }
 
-
-    public static void createNewOrdre(){
+    public static void lavNyOrder(){ // Elisa har kodet halvdelen af dette, alt der relatere til Pizzaer. Mikkel kodede det med Order, og vi har sammen siddet og sat det sammen.
         Scanner scanner = new Scanner(System.in);
         System.out.println("Skriv dit navn:");
-        String ordreName = scanner.nextLine();
+        String orderNavn = scanner.nextLine();
         System.out.println("Antal pizzaer:");
         int antalPizzaer = scanner.nextInt();
         System.out.println("Nummer på kundens ønskede pizza:");
@@ -38,26 +39,27 @@ public class Pizzabar {
         }
         for (int i = 0; i < antalPizzaer; i++) {
             Pizza pizzaChoice = menukort[scanner.nextInt() - 1];
+            ordreStatistik[pizzaChoice.getNummer()-1]++;
             valgtePizzaer.add(pizzaChoice);
             System.out.println(pizzaChoice);
         }
         scanner.nextLine();
         System.out.println("Skriv hvornår du kan hente din ordre:");
-        String pickUpOrdreTime = scanner.nextLine();
-        Order newOrder123 = new Order(ordreName, antalPizzaer, valgtePizzaer, pickUpOrdreTime);
-        System.out.println(newOrder123);
+        String afhentningsTidspunkt = scanner.nextLine();
+        Order newOrder = new Order(orderNavn, antalPizzaer, valgtePizzaer, afhentningsTidspunkt);
+        System.out.println(newOrder);
         for (Pizza a : valgtePizzaer) {
             System.out.println(a);
         }
-        mariosListe(newOrder123);
+        mariosListe(newOrder);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { // Vi har kodet lidt hver  for sig her, men har primært siddet sammen og fået det til at virke.
         Scanner scanner = new Scanner(System.in);
 
         boolean inputChecker = false;
-        while (inputChecker == false) {
-            System.out.println("Velkommen til Marios pizzabar!\nEr du Mario eller Alfonzo? 1 for Mario, 2 for Alfonzo, 3 for at lukke.");
+        while (inputChecker == false) { // Elisa har kodet dette stykke
+            System.out.println("Velkommen til Marios pizzabar!\nEr du Mario eller Alfonzo? 1 for Mario, 2 for Alfonzo, 3 for at lukke og se dagens statistik.");
             int erDuMarioEllerAlfonzo = scanner.nextInt();
             if (erDuMarioEllerAlfonzo == 1) {
                 System.out.println("Skriv 1 for at se menukort, 2 for at se ordre:");
@@ -69,25 +71,27 @@ public class Pizzabar {
                         System.out.println(o);
                     }
                 }
-            } else if (erDuMarioEllerAlfonzo == 2) {
+            } else if (erDuMarioEllerAlfonzo == 2) { // Elisa har kodet her
                 System.out.println("Skriv 1 for at lave en ny ordre, 2 for at markere en ordre afhentet.");
                 int alfonzosValg = scanner.nextInt();
                 if (alfonzosValg == 1){
-                    createNewOrdre();
-                } else if (alfonzosValg == 2){
+                    lavNyOrder();
+                } else if (alfonzosValg == 2){ // Mikkel har kodet her
                     System.out.println("Hvilken ordre vil du afhente?");
                     int afhentOrdre = scanner.nextInt()-1;
                     System.out.println(bestillingsListe.get(afhentOrdre)+" er blevet afhentet nu.");
                     bestillingsListe.remove(afhentOrdre);
                 }
-            } else if (erDuMarioEllerAlfonzo == 3){
+            } else if (erDuMarioEllerAlfonzo == 3){ // Mikkel har kodet her
+                for (int i = 0; i < ordreStatistik.length; i++) {
+                    System.out.println("Pizza nummer: "+(i+1)+" har solgt: "+ordreStatistik[i]+" idag.");
+                }
+
                 inputChecker = true;
             }
             else {
-                System.out.println("Skriv nu 1 eller 2 din idiot <3");
+                System.out.println("Tast 1 eller 2!");
             }
         }
-
-
     }
 }
