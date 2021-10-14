@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 // Order klassen er blevet kodet af Mikkel
 public class Order {
-    static Scanner sc = new Scanner(System.in);
     private String kundeNavn;
     private int antalPizzaer;
     private ArrayList pizzaNavne;
@@ -19,7 +18,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Bestilling til " + "navn: " + kundeNavn + " som har bestilt: "+antalPizzaer+" pizzaer, med afhentningstidspunkt: " + afhentningsTidspunkt;
+        return "Bestilling til " + "navn: " + kundeNavn + " som har bestilt: " + ""+antalPizzaer+" pizzaer, med afhentningstidspunkt: " + afhentningsTidspunkt+"\n"+pizzaNavne;
     }
 
 }

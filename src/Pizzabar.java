@@ -1,5 +1,7 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 
@@ -47,7 +49,7 @@ public class Pizzabar {
         System.out.println("Skriv hvornår du kan hente din ordre:");
         String afhentningsTidspunkt = scanner.nextLine();
         Order newOrder = new Order(orderNavn, antalPizzaer, valgtePizzaer, afhentningsTidspunkt);
-        System.out.println(newOrder);
+        System.out.println("Du har bestilt;");
         for (Pizza a : valgtePizzaer) {
             System.out.println(a);
         }
@@ -70,6 +72,7 @@ public class Pizzabar {
                     for (Order o: bestillingsListe) {
                         System.out.println(o);
                     }
+
                 }
             } else if (erDuMarioEllerAlfonzo == 2) { // Elisa har kodet her
                 System.out.println("Skriv 1 for at lave en ny ordre, 2 for at markere en ordre afhentet.");

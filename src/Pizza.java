@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 // Pizza klassen er blevet kodet af Elisa
 public class Pizza {
-    static Scanner sc = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     private int nummer;
     private String navn;
     private int pris;
@@ -23,7 +23,7 @@ public class Pizza {
 
     public static void choosePizza() {
         System.out.println("Antal pizzaer:");
-        int antalPizzaer = sc.nextInt();
+        int antalPizzaer = scanner.nextInt();
 
         System.out.println("Nummer på kundens ønskede pizza:");
         Pizza margherita = new Pizza(1, "Margherita", 50);
@@ -39,7 +39,7 @@ public class Pizza {
         }
 
         for (int i = 0; i < antalPizzaer; i++) {
-            Pizza pizzaChoice = menukort[sc.nextInt() - 1];
+            Pizza pizzaChoice = menukort[scanner.nextInt() - 1];
 
             System.out.println(pizzaChoice);
         }
@@ -71,11 +71,8 @@ public class Pizza {
 
     @Override
     public String toString() {
-        return "Pizza{" +
-                "number=" + nummer +
-                ", name='" + navn + '\'' +
-                ", price=" + pris +
-                '}';
+        return "Pizza" +
+                "numner = " + nummer + ", navn = " + navn + ", pris = " + pris +"kr.";
     }
 }
 
